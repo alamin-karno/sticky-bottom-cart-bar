@@ -14,6 +14,14 @@
 
 if (!defined('ABSPATH')) exit;
 
+// Check if WooCommerce is active
+if (!class_exists('WooCommerce')) {
+    add_action('admin_notices', function() {
+        echo '<div class="notice notice-error"><p>' . __('WooCommerce is required for the Sticky Bottom Cart Bar plugin to work.', 'woocommerce-sticky-bottom-cart-bar') . '</p></div>';
+    });
+    return;
+}
+
 // Enqueue styles
 add_action('wp_enqueue_scripts', 'cbcb_enqueue_styles');
 function cbcb_enqueue_styles() {
@@ -35,12 +43,28 @@ if (is_admin()) {
     require_once plugin_dir_path(__FILE__) . 'admin/settings.php';
 }
 
+// Add default settings on activation
+register_activation_hook(__FILE__, 'cbcb_plugin_activation');
+function cbcb_plugin_activation() {
+    $default_settings = array(
+        'show_buy_now'      => true,
+        'show_price'        => true,
+        'show_variation'    => false,
+        'show_on_desktop'   => true,
+        'show_on_tablet'    => true,
+        'show_on_mobile'    => true,
+    );
+    if (false === get_option('cbcb_settings')) {
+        add_option('cbcb_settings', $default_settings);
+    }
+}
+
 // Output the fixed bar
 add_action('wp_footer', 'cbcb_output_bar');
 function cbcb_output_bar() {
     if (!is_product()) return;
 
-    $options = get_option('cbcb_settings');
+    $options = get_option('cbcb_settings', array()); // Fallback to avoid errors
     global $product;
 
     // Get visibility options
