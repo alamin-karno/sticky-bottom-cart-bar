@@ -1,3 +1,10 @@
+/*
+Theme Name: Custom Bottom Cart Bar
+Description: Stylesheet for the sticky bottom cart bar.
+Version: 1.0.0
+*/
+
+
 .cbcb-fixed-bar {
     position: fixed;
     bottom: 0;
@@ -26,3 +33,10 @@
 .cbcb-fixed-bar .button {
     margin: 0 5px;
 }
+
+.cbcb-price {
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
