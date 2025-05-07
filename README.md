@@ -14,7 +14,7 @@ A lightweight custom WordPress plugin that adds a fixed **"Add to Cart"** and op
 
 1. Download or clone the repository:
    ```bash
-   git clone https://github.com/yourusername/woocommerce-bottom-cart-bar.git
+   git clone https://github.com/alamin-karno/woocommerce-bottom-cart-bar.git
 2. Zip the plugin folder:
   Compress the `woocommerce-sticky-bottom-cart-bar` folder into a .zip file.
 3. Upload to WordPress:
