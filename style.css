@@ -1,0 +1,28 @@
+.cbcb-fixed-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    padding: 15px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cbcb-fixed-bar form.cart {
+    margin: 0;
+}
+
+.cbcb-fixed-bar .single_add_to_cart_button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.cbcb-fixed-bar .button {
+    margin: 0 5px;
+}
