@@ -22,10 +22,12 @@ function cbcb_enqueue_styles() {
     }
 }
 
-// Load settings
-require_once plugin_dir_path(__FILE__) . 'admin/settings-page.php';
+// Load settings page for customization
+if (is_admin()) {
+    require_once plugin_dir_path(__FILE__) . 'admin/settings-page.php';
+}
 
-// Add the fixed bar HTML
+// Output the fixed bar
 add_action('wp_footer', 'cbcb_output_bar');
 function cbcb_output_bar() {
     if (!is_product()) return;
@@ -33,39 +35,91 @@ function cbcb_output_bar() {
     $options = get_option('cbcb_settings');
     global $product;
 
-    echo '<div class="cbcb-fixed-bar">';
-        if (!empty($options['show_variation'])) {
-            woocommerce_template_single_add_to_cart();
-        } else {
-            echo '<form class="cart" method="post" enctype="multipart/form-data">';
-                echo '<input type="hidden" name="add-to-cart" value="' . esc_attr($product->get_id()) . '">';
-                echo '<button type="submit" class="single_add_to_cart_button button alt">' . esc_html__('Add to Cart', 'woocommerce') . '</button>';
-                if (!empty($options['show_buy_now'])) {
-                    echo '<button type="button" class="button buy_now_button">' . esc_html__('Buy Now', 'custom-bottom-cart-bar') . '</button>';
-                }
-            echo '</form>';
-        }
-        if (!empty($options['show_price'])) {
-            echo '<div class="cbcb-price">' . $product->get_price_html() . '</div>';
-        }
+    $show_on_desktop = !empty($options['show_on_desktop']);
+    $show_on_tablet = !empty($options['show_on_tablet']);
+    $show_on_mobile = !empty($options['show_on_mobile']);
+
+    // Don't show bar if none are enabled
+    if (!$show_on_desktop && !$show_on_tablet && !$show_on_mobile) return;
+
+    echo '<div class="cbcb-fixed-bar' . 
+        ($show_on_desktop ? ' cbcb-desktop' : '') . 
+        ($show_on_tablet ? ' cbcb-tablet' : '') . 
+        ($show_on_mobile ? ' cbcb-mobile' : '') . 
+        '">';
+
+    if (!empty($options['show_variation'])) {
+        woocommerce_template_single_add_to_cart();
+    } else {
+        echo '<form class="cart" method="post" enctype="multipart/form-data">';
+            echo '<input type="hidden" name="add-to-cart" value="' . esc_attr($product->get_id()) . '">';
+            echo '<button type="submit" class="single_add_to_cart_button button alt">' . esc_html__('Add to Cart', 'woocommerce') . '</button>';
+            if (!empty($options['show_buy_now'])) {
+                echo '<button type="button" class="button buy_now_button">' . esc_html__('Buy Now', 'custom-bottom-cart-bar') . '</button>';
+            }
+        echo '</form>';
+    }
+
+    if (!empty($options['show_price'])) {
+        echo '<div class="cbcb-price">' . $product->get_price_html() . '</div>';
+    }
+
     echo '</div>';
 }
 
-// JS for Buy Now button redirect
+// JS for Buy Now and variation validation
 add_action('wp_footer', 'cbcb_buy_now_script');
 function cbcb_buy_now_script() {
     if (!is_product()) return;
     ?>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const buyNowBtn = document.querySelector('.buy_now_button');
-            if (buyNowBtn) {
-                buyNowBtn.addEventListener('click', function () {
-                    document.querySelector('form.cart').submit();
-                    window.location.href = "<?php echo wc_get_checkout_url(); ?>";
-                });
+    document.addEventListener('DOMContentLoaded', function () {
+        const buyNowBtn = document.querySelector('.buy_now_button');
+        const addToCartBtn = document.querySelector('.single_add_to_cart_button');
+        const variationForm = document.querySelector('form.variations_form');
+
+        function hasUnselectedVariations() {
+            if (!variationForm) return false;
+            const selects = variationForm.querySelectorAll('select');
+            for (const select of selects) {
+                if (!select.value) return true;
             }
-        });
+            return false;
+        }
+
+        function showVariationWarning() {
+            if (!document.querySelector('.cbcb-warning')) {
+                const warning = document.createElement('div');
+                warning.className = 'cbcb-warning';
+                warning.textContent = 'Please select all product options (like size or color).';
+                document.querySelector('.cbcb-fixed-bar').appendChild(warning);
+                setTimeout(() => warning.remove(), 4000);
+            }
+        }
+
+        if (buyNowBtn) {
+            buyNowBtn.addEventListener('click', function () {
+                if (hasUnselectedVariations()) {
+                    showVariationWarning();
+                } else {
+                    variationForm?.submit();
+                    setTimeout(() => {
+                        window.location.href = "<?php echo wc_get_checkout_url(); ?>";
+                    }, 500);
+                }
+            });
+        }
+
+        if (addToCartBtn) {
+            addToCartBtn.addEventListener('click', function (e) {
+                if (hasUnselectedVariations()) {
+                    e.preventDefault();
+                    showVariationWarning();
+                }
+            });
+        }
+    });
     </script>
     <?php
 }
+?>

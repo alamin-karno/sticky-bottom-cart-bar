@@ -16,9 +16,10 @@ function cbcb_add_admin_menu() {
 function cbcb_settings_init() {
     register_setting('cbcb_settings_group', 'cbcb_settings');
 
+    // Section 1: Display Options
     add_settings_section(
         'cbcb_settings_section',
-        __('Display Options', 'custom-bottom-cart-bar'),
+        __('General Display Options', 'custom-bottom-cart-bar'),
         null,
         'custom_bottom_cart_bar'
     );
@@ -49,6 +50,41 @@ function cbcb_settings_init() {
         'cbcb_settings_section',
         ['label_for' => 'show_variation']
     );
+
+    // Section 2: Device Visibility
+    add_settings_section(
+        'cbcb_device_section',
+        __('Device Visibility', 'custom-bottom-cart-bar'),
+        null,
+        'custom_bottom_cart_bar'
+    );
+
+    add_settings_field(
+        'show_on_desktop',
+        __('Show on Desktop', 'custom-bottom-cart-bar'),
+        'cbcb_checkbox_field_render',
+        'custom_bottom_cart_bar',
+        'cbcb_device_section',
+        ['label_for' => 'show_on_desktop']
+    );
+
+    add_settings_field(
+        'show_on_tablet',
+        __('Show on Tablet', 'custom-bottom-cart-bar'),
+        'cbcb_checkbox_field_render',
+        'custom_bottom_cart_bar',
+        'cbcb_device_section',
+        ['label_for' => 'show_on_tablet']
+    );
+
+    add_settings_field(
+        'show_on_mobile',
+        __('Show on Mobile', 'custom-bottom-cart-bar'),
+        'cbcb_checkbox_field_render',
+        'custom_bottom_cart_bar',
+        'cbcb_device_section',
+        ['label_for' => 'show_on_mobile']
+    );
 }
 
 function cbcb_checkbox_field_render($args) {
@@ -72,3 +108,4 @@ function cbcb_options_page() {
     </div>
     <?php
 }
+?>
