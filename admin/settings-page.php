@@ -89,8 +89,11 @@ function cbcb_settings_init() {
 
 function cbcb_checkbox_field_render($args) {
     $options = get_option('cbcb_settings');
+
+    // Default: enabled (true) if not explicitly set
+    $is_checked = isset($options[$args['label_for']]) ? !empty($options[$args['label_for']]) : true;
     ?>
-    <input type='checkbox' name='cbcb_settings[<?php echo $args['label_for']; ?>]' <?php checked(!empty($options[$args['label_for']])); ?> />
+    <input type='checkbox' name='cbcb_settings[<?php echo esc_attr($args['label_for']); ?>]' <?php checked($is_checked); ?> />
     <?php
 }
 

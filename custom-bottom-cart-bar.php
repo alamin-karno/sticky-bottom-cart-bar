@@ -22,6 +22,15 @@ function cbcb_enqueue_styles() {
     }
 }
 
+// Add Settings link to Plugins page
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'cbcb_add_settings_link');
+
+function cbcb_add_settings_link($links) {
+    $settings_link = '<a href="options-general.php?page=custom_bottom_cart_bar">' . __('Settings') . '</a>';
+    array_unshift($links, $settings_link);
+    return $links;
+}
+
 // Load settings page for customization
 if (is_admin()) {
     require_once plugin_dir_path(__FILE__) . 'admin/settings-page.php';
