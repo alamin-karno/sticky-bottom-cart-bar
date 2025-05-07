@@ -24,7 +24,6 @@ function cbcb_enqueue_styles() {
 
 // Add Settings link to Plugins page
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'cbcb_add_settings_link');
-
 function cbcb_add_settings_link($links) {
     $settings_link = '<a href="options-general.php?page=custom_bottom_cart_bar">' . __('Settings') . '</a>';
     array_unshift($links, $settings_link);
@@ -33,7 +32,7 @@ function cbcb_add_settings_link($links) {
 
 // Load settings page for customization
 if (is_admin()) {
-    require_once plugin_dir_path(__FILE__) . 'admin/settings-page.php';
+    require_once plugin_dir_path(__FILE__) . 'admin/settings.php';
 }
 
 // Output the fixed bar
@@ -44,6 +43,7 @@ function cbcb_output_bar() {
     $options = get_option('cbcb_settings');
     global $product;
 
+    // Get visibility options
     $show_on_desktop = !empty($options['show_on_desktop']);
     $show_on_tablet = !empty($options['show_on_tablet']);
     $show_on_mobile = !empty($options['show_on_mobile']);
@@ -113,7 +113,7 @@ function cbcb_buy_now_script() {
                 } else {
                     variationForm?.submit();
                     setTimeout(() => {
-                        window.location.href = "<?php echo wc_get_checkout_url(); ?>";
+                        window.location.href = "<?php echo esc_url(wc_get_checkout_url()); ?>";
                     }, 500);
                 }
             });
