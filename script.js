@@ -20,6 +20,7 @@ jQuery(function ($) {
         const $form = $('form.cart');
         const $btn = $(document.activeElement);
 
+        // Check if the form has variations and if any variation is selected
         if ($form.hasClass('variations_form') && $form.find('.variations select').length > 0) {
             let valid = true;
             $form.find('.variations select').each(function () {
@@ -34,22 +35,18 @@ jQuery(function ($) {
 
         showLoading($btn);
 
-        const formData = $form.serialize();
+        let formData = $form.serialize();
 
-        // Check if variation is selected and add it to the form data
-        let variationData = '';
-        $form.find('.variations select').each(function () {
-            if ($(this).val()) {
-                variationData += '&' + $(this).attr('name') + '=' + $(this).val();
-            }
-        });
+        // Remove main product ID if variation is selected
+        if ($form.hasClass('variations_form')) {
+            formData = formData.replace(/product_id=[0-9]+&?/g, '');
+        }
         
-        // Combine form data and variation data
-        const finalFormData = formData + variationData;
+        // No need to add variationData manually since it's already in formData
+        const finalFormData = formData;
 
         $.post(cbcb_params.ajax_url, finalFormData, function () {
             hideLoading($btn);
-
             window.location.href = redirectTo;
         });
     }
