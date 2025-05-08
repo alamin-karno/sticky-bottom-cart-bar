@@ -55,6 +55,20 @@ add_action('woocommerce_after_add_to_cart_form', function () {
             <button id="cbcb-buy-now"><span class="cbcb-label">BUY NOW</span><span class="cbcb-loader"></span></button>
         </div>
     </div>
-    <style>body.single-product { padding-bottom: 100px !important; }</style>
+    <style>
+        body.single-product { padding-bottom: 100px !important; }
+
+        /* Hide only default Add to Cart & Buy Now buttons inside form.cart */
+        form.cart button.single_add_to_cart_button,
+        form.cart .buy-now-button {
+            display: none !important;
+        }
+        
+        /* Hide entire quantity input section */
+        form.cart .quantity {
+            display: none !important;
+        }
+
+    </style>
     <?php
 });

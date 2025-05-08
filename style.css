@@ -23,18 +23,6 @@
     white-space: nowrap;
 }
 
-@media (min-width: 768px) {
-    #cbcb-price-container {
-        font-size: 16px;
-    }
-}
-
-@media (min-width: 1024px) {
-    #cbcb-price-container {
-        font-size: 18px;
-    }
-}
-
 #cbcb-buttons {
     display: flex;
     gap: 5px;
@@ -58,19 +46,6 @@
     position: relative;
 }
 
-@media (min-width: 768px) {
-    #cbcb-sticky-bar button {
-        font-size: 14px;
-    }
-}
-
-
-@media (min-width: 1024px) {
-    #cbcb-sticky-bar button {
-        font-size: 16px;
-    }
-}
-
 #cbcb-sticky-bar button:hover {
     opacity: 0.9;
 }
@@ -85,6 +60,31 @@
     animation: spin 1s linear infinite;
     margin-left: 16px;
     margin-right: 16px;
+}
+
+@media (min-width: 768px) {
+    #cbcb-sticky-bar button {
+        font-size: 14px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    #cbcb-price-container {
+        font-size: 16px;
+    }
+}
+
+
+@media (min-width: 1024px) {
+    #cbcb-sticky-bar button {
+        font-size: 16px;
+        padding-left: 34px;
+        padding-right: 34px;
+    }
+
+    #cbcb-price-container {
+        font-size: 18px;
+    }
 }
 
 @keyframes spin {
