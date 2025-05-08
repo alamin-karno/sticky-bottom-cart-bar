@@ -1,70 +1,50 @@
-/*
-Theme Name: WooCommerce Sticky Bottom Cart Bar
-Description: Stylesheet for the sticky bottom cart bar.
-Version: 1.0.0
-*/
-
-.cbcb-fixed-bar {
+#cbcb-sticky-bar {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #fff;
+    background: #ffffff;
     border-top: 1px solid #ddd;
-    padding: 15px;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    padding: 16px 10px 16px;
     z-index: 9999;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }
 
-/* Show the bar by default on all devices */
-.cbcb-desktop, .cbcb-tablet, .cbcb-mobile {
-    display: block;
-}
-
-/* Hide on specific devices if unchecked */
-.cbcb-hidden {
-    display: none;
-}
-
-/* Media Queries for Device Visibility */
-@media (max-width: 767px) {
-    .cbcb-mobile {
-        display: block;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-    .cbcb-tablet {
-        display: block;
-    }
-}
-
-@media (min-width: 1025px) {
-    .cbcb-desktop {
-        display: block;
-    }
-}
-
-.cbcb-warning {
-    color: red;
+#cbcb-sticky-bar button {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 12px;
     font-weight: bold;
-    margin-top: 10px;
-}
-
-.cbcb-price {
-    font-size: 16px;
-    font-weight: bold;
-    margin-left: 20px;
-}
-
-button.buy_now_button {
-    background-color: #0073e6;
-    color: white;
-    padding: 10px;
-    margin-left: 15px;
     border: none;
+    border-radius: 12px;
+    background-color: #ff3b30;
+    color: white;
     cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#cbcb-sticky-bar button:hover {
+    opacity: 0.9;
+}
+
+.cbcb-loader {
+    display: none;
+    width: 18px;
+    height: 18px;
+    border: 3px solid #fff;
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
