@@ -2,7 +2,7 @@
 Contributors: alaminkarno
 Tags: add to cart, sticky bar, buy now, floating button, woocommerce plugin
 Requires at least: 5.0
-Tested up to: 6.5
+Tested up to: 6.8
 Requires PHP: 7.2
 Stable tag: 1.0.0
 License: MIT

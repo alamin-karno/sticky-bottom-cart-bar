@@ -9,7 +9,6 @@
  * License: MIT
  * License URI: https://opensource.org/licenses/MIT
  * Text Domain: sticky-bottom-cart-bar
- * Domain Path: /languages
  */
 
  if (!defined('ABSPATH')) exit;
