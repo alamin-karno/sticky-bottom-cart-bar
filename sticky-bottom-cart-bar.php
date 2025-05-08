@@ -13,12 +13,28 @@
 
  if (!defined('ABSPATH')) exit;
 
+ // Get plugin version dynamically
+$plugin_data = get_file_data(__FILE__, array('Version' => 'Version'), false);
+$plugin_version = isset($plugin_data['Version']) ? $plugin_data['Version'] : '1.0.0';
+
  // Enqueue CSS/JS
  add_action('wp_enqueue_scripts', function () {
      if (!is_product()) return;
  
-     wp_enqueue_style('cbcb-style', plugin_dir_url(__FILE__) . 'style.css');
-     wp_enqueue_script('cbcb-script', plugin_dir_url(__FILE__) . 'script.js', ['jquery'], null, true);
+     wp_enqueue_style(
+        'cbcb-style',
+        plugin_dir_url(__FILE__) . 'style.css',
+        array(),
+        $plugin_version
+    );
+    
+    wp_enqueue_script(
+        'cbcb-script',
+        plugin_dir_url(__FILE__) . 'script.js',
+        array('jquery'),
+        $plugin_version,
+        true
+    );
  
      wp_localize_script('cbcb-script', 'cbcb_params', [
          'ajax_url' => WC_AJAX::get_endpoint('add_to_cart'),
