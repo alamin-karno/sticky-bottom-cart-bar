@@ -15,9 +15,6 @@ A lightweight plugin that lets users quickly add products to cart or buy immedia
 
 == Features ==
 * Sticky Add to Cart and Buy Now bar at the bottom of product pages
-* Enable/disable Buy Now button
-* Show/hide product price
-* Show/hide variation/form
 * Works seamlessly with WooCommerce
 
 == Installation ==
@@ -36,7 +33,7 @@ Yes, go to Settings > Bottom Cart Bar and uncheck "Show Buy Now Button".
 == Changelog ==
 
 = 1.0.0 =
-* Initial release: Sticky Add to Cart + Buy Now button with customization options.
+* Initial release: Sticky Add to Cart + Buy Now button.
 
 == Upgrade Notice ==
 
