@@ -1,14 +1,14 @@
 <?php
 /**
  * Plugin Name: WooCommerce Sticky Bottom Cart Bar
- * Plugin URI: https://github.com/alamin-karno/woocommerce-sticky-bottom-cart-bar
- * Description: Adds a fixed Add to Cart & Buy Now bar at the bottom of WooCommerce product pages with customization options.
+ * Plugin URI: https://github.com/alamin-karno/sticky-bottom-cart-bar
+ * Description: Adds a Sticky Add to Cart & Buy Now bar at the bottom of WooCommerce product pages.
  * Version: 1.0.0
  * Author: Md. Al-Amin
  * Author URI: https://www.linkedin.com/in/alaminkarno/
  * License: MIT
- * License URI: https://github.com/alamin-karno/woocommerce-sticky-bottom-cart-bar/blob/main/LICENSE
- * Text Domain: woocommerce-sticky-bottom-cart-bar
+ * License URI: https://opensource.org/licenses/MIT
+ * Text Domain: sticky-bottom-cart-bar
  * Domain Path: /languages
  */
 

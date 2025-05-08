@@ -1,4 +1,4 @@
-# WooCommerce Sticky Bottom Cart Bar
+# Sticky Bottom Cart Bar
 
 A lightweight custom WordPress plugin that adds a fixed **"Add to Cart"** and **"Buy Now"** bar to the bottom of WooCommerce single product pages.
 
@@ -14,9 +14,9 @@ A lightweight custom WordPress plugin that adds a fixed **"Add to Cart"** and **
 
 1. Download or clone the repository:
    ```bash
-   git clone https://github.com/alamin-karno/woocommerce-bottom-cart-bar.git
+   git clone https://github.com/alamin-karno/sticky-bottom-cart-bar
 2. Zip the plugin folder:
-  Compress the `woocommerce-sticky-bottom-cart-bar` folder into a .zip file.
+  Compress the `sticky-bottom-cart-bar` folder into a .zip file.
 3. Upload to WordPress:
   - Go to `Plugins → Add New → Upload Plugin`
   - Select your `.zip` file and click Install Now
@@ -27,9 +27,9 @@ You can edit the CSS in `style.css` to match your theme or move it into your the
 
 ## 📁 File Structure
   ```css
-woocommerce-sticky-bottom-cart-bar/
+sticky-bottom-cart-bar/
 │
-├── custom-bottom-cart-bar.php   # Main plugin code
+├── sticky-bottom-cart-bar.php   # Main plugin code
 ├── script.js                    # Javascript for sticky bar functionality
 ├── style.css                    # Sticky bar styling
 ├── README.md                    # Documentation
