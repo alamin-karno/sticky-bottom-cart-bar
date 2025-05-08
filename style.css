@@ -5,7 +5,7 @@
     width: 100%;
     background: #ffffff;
     border-top: 1px solid #ddd;
-    padding: 10px 5px 0px 5px;
+    padding: 10px 5px 0px 10px;
     z-index: 9999;
     display: flex;
     justify-content: space-between;
@@ -23,9 +23,21 @@
     white-space: nowrap;
 }
 
+@media (min-width: 768px) {
+    #cbcb-price-container {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #cbcb-price-container {
+        font-size: 18px;
+    }
+}
+
 #cbcb-buttons {
     display: flex;
-    gap: 10px;
+    gap: 5px;
     flex-grow: 1;
     justify-content: flex-end;
 }
@@ -46,6 +58,19 @@
     position: relative;
 }
 
+@media (min-width: 768px) {
+    #cbcb-sticky-bar button {
+        font-size: 14px;
+    }
+}
+
+
+@media (min-width: 1024px) {
+    #cbcb-sticky-bar button {
+        font-size: 16px;
+    }
+}
+
 #cbcb-sticky-bar button:hover {
     opacity: 0.9;
 }
@@ -58,7 +83,8 @@
     border-top: 3px solid transparent;
     border-radius: 50%;
     animation: spin 1s linear infinite;
-    margin-left: 10px;
+    margin-left: 16px;
+    margin-right: 16px;
 }
 
 @keyframes spin {
