@@ -20,7 +20,6 @@ jQuery(function ($) {
         const $form = $('form.cart');
         const $btn = $(document.activeElement);
 
-        // Check if the form has variations and if any variation is selected
         if ($form.hasClass('variations_form') && $form.find('.variations select').length > 0) {
             let valid = true;
             $form.find('.variations select').each(function () {
@@ -37,25 +36,23 @@ jQuery(function ($) {
 
         let formData = $form.serialize();
 
-        // Remove main product ID if variation is selected
         if ($form.hasClass('variations_form')) {
             formData = formData.replace(/product_id=[0-9]+&?/g, '');
         }
-        
-        // No need to add variationData manually since it's already in formData
-        const finalFormData = formData;
 
-        $.post(cbcb_params.ajax_url, finalFormData, function () {
+        $.post(cbcb_params.ajax_url, formData, function () {
             hideLoading($btn);
             window.location.href = redirectTo;
         });
     }
 
-    $('#cbcb-add-to-cart').click(function () {
-        submitForm(cbcb_params.cart_url);
-    });
+    $('#cbcb-add-to-cart').click(() => submitForm(cbcb_params.cart_url));
+    $('#cbcb-buy-now').click(() => submitForm(cbcb_params.checkout_url));
 
-    $('#cbcb-buy-now').click(function () {
-        submitForm(cbcb_params.checkout_url);
+    // Update price on variation change
+    $('form.variations_form').on('found_variation', function (event, variation) {
+        if (variation && variation.price_html) {
+            $('#cbcb-price-container').html(variation.price_html);
+        }
     });
 });
