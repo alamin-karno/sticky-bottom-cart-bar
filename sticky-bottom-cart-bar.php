@@ -49,7 +49,10 @@ add_action('woocommerce_after_add_to_cart_form', function () {
 
     ?>
     <div id="cbcb-sticky-bar">
-        <div id="cbcb-price-container"><?php echo $product->get_price_html(); ?></div>
+        <div id="cbcb-price-wrapper">
+            <div id="cbcb-price-label">Price:</div>
+            <div id="cbcb-price-container"><?php echo $product->get_price_html(); ?></div>
+        </div>
         <div id="cbcb-buttons">
             <button id="cbcb-add-to-cart"><span class="cbcb-label">ADD TO CART</span><span class="cbcb-loader"></span></button>
             <button id="cbcb-buy-now"><span class="cbcb-label">BUY NOW</span><span class="cbcb-loader"></span></button>
