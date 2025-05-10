@@ -11,15 +11,36 @@ jQuery(function ($) {
         $btn.find('.cbcb-loader').hide();
     }
 
-    function showVariationWarning() {
-        $('html, body').animate({ scrollTop: $('.variations_form').offset().top - 100 }, 400);
-        alert('Please select a variation before clicking the button.');
+    function showWarning(message, scrollToSelector = 'form.cart') {
+        $('html, body').animate({ scrollTop: $(scrollToSelector).offset().top - 100 }, 400);
+        alert(message);
+    }
+
+    function validateFormFields($form) {
+        let valid = true;
+
+        $form.find('input, select, textarea').each(function () {
+            const $el = $(this);
+
+            // Skip hidden fields and unchecked checkboxes/radio
+            if (!$el.is(':visible') || $el.prop('disabled')) return;
+
+            const isRequired = $el.prop('required') || $el.closest('.required').length > 0;
+
+            if (isRequired && !$el.val()) {
+                valid = false;
+                return false; // break loop
+            }
+        });
+
+        return valid;
     }
 
     function submitForm(redirectTo) {
         const $form = $('form.cart');
         const $btn = $(document.activeElement);
 
+        // Validate variation selections
         if ($form.hasClass('variations_form') && $form.find('.variations select').length > 0) {
             let valid = true;
             $form.find('.variations select').each(function () {
@@ -27,9 +48,15 @@ jQuery(function ($) {
             });
 
             if (!valid) {
-                showVariationWarning();
+                showWarning('Please select a product variation before proceeding.', '.variations_form');
                 return;
             }
+        }
+
+        // Validate all required form inputs
+        if (!validateFormFields($form)) {
+            showWarning('Please fill all required product fields before adding to cart.');
+            return;
         }
 
         showLoading($btn);
