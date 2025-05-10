@@ -12,6 +12,13 @@
     align-items: center;
     gap: 10px;
     box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.cbcb-hidden {
+    opacity: 0;
+    transform: translateY(100%);
+    pointer-events: none;
 }
 
 /* Price label + value container */

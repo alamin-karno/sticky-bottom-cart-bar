@@ -82,4 +82,21 @@ jQuery(function ($) {
             $('#cbcb-price-container').html(variation.price_html);
         }
     });
+
+    // Sticky Bar visibility based on scroll position
+    const stickyBar = $('#cbcb-sticky-bar');
+
+    $(window).on('scroll', function () {
+        const scrollPosition = $(window).scrollTop();
+        const documentHeight = $(document).height();
+        const windowHeight = $(window).height();
+        
+        if (scrollPosition + windowHeight >= documentHeight) {
+            // Scrolled to the bottom
+            stickyBar.addClass('cbcb-hidden');
+        } else {
+            // Not at the bottom
+            stickyBar.removeClass('cbcb-hidden');
+        }
+    });
 });

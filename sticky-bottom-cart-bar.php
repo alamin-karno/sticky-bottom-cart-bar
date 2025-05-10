@@ -59,7 +59,6 @@ add_action('woocommerce_after_add_to_cart_form', function () {
         </div>
     </div>
     <style>
-        body.single-product { padding-bottom: 100px !important; }
 
         /* Hide only default Add to Cart & Buy Now buttons inside form.cart */
         form.cart button.single_add_to_cart_button,
