@@ -4,11 +4,13 @@ A lightweight custom WordPress plugin that adds a fixed **"Add to Cart"** and **
 
 ## 🛒 Features
 
-- Adds a sticky cart bar to the bottom of product pages
-- Works with simple and variable products
-- Uses native WooCommerce add to cart form for full compatibility
-- Clean and minimal design with styling
-- Lightweight and easy to customize
+- Adds a sticky cart bar to the bottom of product pages.
+- Displays product price dynamically, including updates when variations are selected.
+- Works with both simple and variable products.
+- Uses native WooCommerce add-to-cart form for full compatibility.
+- Sticky bar visibility toggles based on scroll direction (hides at the bottom, fades in when scrolling up).
+- Clean and minimal design with responsive styling.
+- Lightweight and easy to customize.
 
 ## 🚀 Installation
 
