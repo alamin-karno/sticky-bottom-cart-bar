@@ -79,7 +79,18 @@ jQuery(function ($) {
     // Update price on variation change
     $('form.variations_form').on('found_variation', function (event, variation) {
         if (variation && variation.price_html) {
-            $('#cbcb-price-container').html(variation.price_html);
+            // Create a temporary element to parse HTML
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = variation.price_html;
+
+            // Try to get sale price first (inside <ins>), then fallback to regular
+            let priceEl = tempDiv.querySelector('ins .amount') || tempDiv.querySelector('.amount');
+
+            if (priceEl) {
+                $('#cbcb-price-container').html(priceEl.outerHTML);
+            } else {
+                $('#cbcb-price-container').html(variation.price_html); // fallback just in case
+            }
         }
     });
 
