@@ -4,7 +4,7 @@ Tags: add to cart, sticky bar, buy now, floating button, woocommerce plugin
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 1.0.0
+Stable tag: 1.1.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 Donate link: https://www.buymeacoffee.com/alaminkarno
@@ -17,11 +17,13 @@ Sticky Bottom Cart Bar is a lightweight plugin that enhances your WooCommerce pr
 
 == Features ==
 
-* Sticky Add to Cart and Buy Now bar at the bottom of WooCommerce product pages
-* Optimized for mobile and desktop
-* Customizable visibility of Buy Now button and price
-* Works with variable products
-* Easy to set up – no coding needed
+* Adds a sticky Add to Cart and Buy Now bar fixed to the bottom of WooCommerce single product pages.
+* Displays product price dynamically, including updates when product variations are selected.
+* Compatible with both simple and variable WooCommerce products.
+* Uses native WooCommerce add-to-cart form to ensure full compatibility.
+* Sticky bar visibility toggles based on scroll direction: hides when scrolled to the bottom, fades in when scrolling up.
+* Clean, minimal, and responsive design optimized for both mobile and desktop.
+* Lightweight and easy to customize via CSS.
 
 == Installation ==
 
