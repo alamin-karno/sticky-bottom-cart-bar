@@ -42,9 +42,9 @@ Once you submit your pull request, it will be reviewed by the maintainers. They 
 Once your pull request is approved, it will be merged into the main branch. You will be notified when this happens.
 
 ## ✅ Code Guidelines
-Follow [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/).
-Use descriptive commit messages.
-Test your code on a local WordPress + WooCommerce installation.
+- Follow [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/).
+- Use descriptive commit messages.
+- Test your code on a local WordPress + WooCommerce installation.
 
 ## 💬 Need Help?
 If you're unsure about anything, feel free to [open an issue](https://github.com/alamin-karno/sticky-bottom-cart-bar/issues) or contact the maintainer via [email](mailto:alamin.karno@gmail.com).
