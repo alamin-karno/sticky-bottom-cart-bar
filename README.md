@@ -17,26 +17,52 @@ A lightweight custom WordPress plugin that adds a fixed **"Add to Cart"** and **
 1. Download or clone the repository:
    ```bash
    git clone https://github.com/alamin-karno/sticky-bottom-cart-bar
+   ```
+   Or download the ZIP file from the [releases page](https://github.com/alamin-karno/sticky-bottom-cart-bar/releases)
 2. Zip the plugin folder:
-  Compress the `sticky-bottom-cart-bar` folder into a .zip file.
+  Compress the `sticky-bottom-cart-bar` folder into a `.zip` file.
 3. Upload to WordPress:
   - Go to `Plugins → Add New → Upload Plugin`
   - Select your `.zip` file and click Install Now
   - Activate the plugin
 
 ## 🔧 Customization
-You can edit the CSS in `style.css` to match your theme or move it into your theme’s stylesheet if needed.
+You can edit the CSS in `assets/css/style.css` to match your theme or move it into your theme’s stylesheet if needed.
 
 ## 📁 File Structure
-  ```css
-sticky-bottom-cart-bar/
-│
-├── sticky-bottom-cart-bar.php   # Main plugin code
-├── script.js                    # Javascript for sticky bar functionality
-├── style.css                    # Sticky bar styling
-├── README.md                    # Documentation
-├── LICENSE                      # License information
-```
+  ```bash
+  sticky-bottom-cart-bar/
+  │
+  ├── sticky-bottom-cart-bar.php        # Main plugin code
+  ├── assets/
+  │   ├── css/style.css                 # Sticky bar styling
+  │   └── js/script.js                  # JavaScript for sticky bar functionality
+  ├── README.md                         # Plugin documentation
+  ├── LICENSE                           # License information
+  └── CHANGELOG.md                      # Changelog
+  ```
+
+## 📦 Compatibility
+- WordPress 5.0+
+- PHP 7.2+
+- WooCommerce (latest version recommended)
+
+## 🛠️ Support & Contributions
+
+If you encounter issues, have questions, or would like to contribute:
+
+- **🐞 Bug Reports & Feature Requests**  
+  Please open an issue on the [GitHub repository](https://github.com/alamin-karno/sticky-bottom-cart-bar/issues).
+
+- **🤝 Contributing**  
+  See the [Contributing Guidelines](CONTRIBUTING.md) for how to get started.
+
+- **📬 General Inquiries**  
+  Feel free to contact me directly via [email](mailto:alamin.karno@gmail.com).
+
+- **🙋 Support**  
+  Check the [FAQ](#) (coming soon) or open an issue for help.
+
 
 ## 📜 License
 [MIT License](LICENSE). Free to use and modify.

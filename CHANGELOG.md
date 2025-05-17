@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.1] - 2025-05-17
+
+### Fixed
+- Escaped product price output using WordPress-compliant functions to enhance security.
+- Addressed WordPress plugin review feedback by improving output handling to align with best practices.
+
 ## [1.1.0] - 2025-05-10
 
 ### Added
