@@ -50,7 +50,7 @@ add_action('woocommerce_after_add_to_cart_form', function () {
             $price_to_show = $product->get_sale_price() ? $product->get_sale_price() : $product->get_regular_price();
             $price_html = wc_price($price_to_show);
             ?>
-            <div id="sbcb-price-container"><?php echo $price_html; ?></div>
+            <div id="sbcb-price-container"><?php echo wp_kses_post($price_html); ?></div>
         </div>
         <div id="sbcb-buttons">
             <button id="sbcb-add-to-cart"><span class="sbcb-label">ADD TO CART</span><span class="sbcb-loader"></span></button>
