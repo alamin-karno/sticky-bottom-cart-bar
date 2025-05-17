@@ -9,7 +9,7 @@ Click the "Fork" button in the upper right corner of the GitHub page to create y
 
 ### 2. Clone Your Fork
 ```bash
-git clone https://github.com/your-username/sticky-bottom-cart-bar.git
+git clone https://github.com/alamin-karno/sticky-bottom-cart-bar.git
 cd sticky-bottom-cart-bar
 ```
 
