@@ -1,5 +1,5 @@
 /* Sticky Bar Container */
-#cbcb-sticky-bar {
+#sbcb-sticky-bar {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -17,14 +17,14 @@
 }
 
 /* Hidden State */
-.cbcb-hidden {
+.sbcb-hidden {
     opacity: 0;
     transform: translateY(100%);
     pointer-events: none;
 }
 
 /* Price Wrapper */
-#cbcb-price-wrapper {
+#sbcb-price-wrapper {
     display: flex;
     align-items: center;
     gap: 4px;
@@ -37,7 +37,7 @@
 }
 
 /*Price Inherit Font Size */
-#cbcb-price-container .amount {
+#sbcb-price-container .amount {
     font-size: inherit !important;
     color: #0c0bff !important;
     font-weight: bold;
@@ -45,7 +45,7 @@
 }
 
 /* Label Styling */
-#cbcb-price-label {
+#sbcb-price-label {
     font-size: inherit !important;
     color: #000;
     font-weight: bold;
@@ -53,7 +53,7 @@
 }
 
 /* Button Container */
-#cbcb-buttons {
+#sbcb-buttons {
     display: flex;
     gap: 5px;
     flex-grow: 1;
@@ -61,7 +61,7 @@
 }
 
 /* Buttons */
-#cbcb-sticky-bar button {
+#sbcb-sticky-bar button {
     padding: 4px 16px;
     font-size: 12px;
     font-weight: bold;
@@ -79,12 +79,12 @@
 }
 
 /* Button Hover */
-#cbcb-sticky-bar button:hover {
+#sbcb-sticky-bar button:hover {
     opacity: 0.9;
 }
 
 /* Loader */
-.cbcb-loader {
+.sbcb-loader {
     display: none;
     width: 18px;
     height: 18px;
@@ -104,26 +104,38 @@
 
 /* Medium Screens (Tablets) */
 @media (min-width: 768px) {
-    #cbcb-sticky-bar button {
+    #sbcb-sticky-bar button {
         font-size: 14px;
         padding-left: 24px;
         padding-right: 24px;
     }
 
-    #cbcb-price-wrapper {
+    #sbcb-price-wrapper {
         font-size: 16px;
     }
 }
 
 /* Large Screens (Desktops) */
 @media (min-width: 1024px) {
-    #cbcb-sticky-bar button {
+    #sbcb-sticky-bar button {
         font-size: 16px;
         padding-left: 34px;
         padding-right: 34px;
     }
 
-    #cbcb-price-wrapper {
+    #sbcb-price-wrapper {
         font-size: 18px;
     }
+}
+
+
+/* Hide only default Add to Cart & Buy Now buttons inside form.cart */
+form.cart button.single_add_to_cart_button,
+form.cart .buy-now-button {
+    display: none !important;
+}
+
+/* Hide entire quantity input section */
+form.cart .quantity {
+    display: none !important;
 }

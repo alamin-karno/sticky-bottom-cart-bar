@@ -1,14 +1,14 @@
 jQuery(function ($) {
     function showLoading($btn) {
         $btn.prop('disabled', true);
-        $btn.find('.cbcb-label').hide();
-        $btn.find('.cbcb-loader').show();
+        $btn.find('.sbcb-label').hide();
+        $btn.find('.sbcb-loader').show();
     }
 
     function hideLoading($btn) {
         $btn.prop('disabled', false);
-        $btn.find('.cbcb-label').show();
-        $btn.find('.cbcb-loader').hide();
+        $btn.find('.sbcb-label').show();
+        $btn.find('.sbcb-loader').hide();
     }
 
     function showWarning(message, scrollToSelector = 'form.cart') {
@@ -67,14 +67,14 @@ jQuery(function ($) {
             formData = formData.replace(/product_id=[0-9]+&?/g, '');
         }
 
-        $.post(cbcb_params.ajax_url, formData, function () {
+        $.post(sbcb_params.ajax_url, formData, function () {
             hideLoading($btn);
             window.location.href = redirectTo;
         });
     }
 
-    $('#cbcb-add-to-cart').click(() => submitForm(cbcb_params.cart_url));
-    $('#cbcb-buy-now').click(() => submitForm(cbcb_params.checkout_url));
+    $('#sbcb-add-to-cart').click(() => submitForm(sbcb_params.cart_url));
+    $('#sbcb-buy-now').click(() => submitForm(sbcb_params.checkout_url));
 
     // Update price on variation change
     $('form.variations_form').on('found_variation', function (event, variation) {
@@ -87,15 +87,15 @@ jQuery(function ($) {
             let priceEl = tempDiv.querySelector('ins .amount') || tempDiv.querySelector('.amount');
 
             if (priceEl) {
-                $('#cbcb-price-container').html(priceEl.outerHTML);
+                $('#sbcb-price-container').html(priceEl.outerHTML);
             } else {
-                $('#cbcb-price-container').html(variation.price_html); // fallback just in case
+                $('#sbcb-price-container').html(variation.price_html); // fallback just in case
             }
         }
     });
 
     // ✅ Sticky Bar visibility based on reaching the bottom only
-    const stickyBar = $('#cbcb-sticky-bar');
+    const stickyBar = $('#sbcb-sticky-bar');
 
     function checkIfBottom() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -105,9 +105,9 @@ jQuery(function ($) {
     const hasScroll = docHeight > windowHeight;
 
         if (hasScroll && scrollTop + windowHeight >= docHeight - 5) {
-            stickyBar.addClass('cbcb-hidden');
+            stickyBar.addClass('sbcb-hidden');
         } else {
-            stickyBar.removeClass('cbcb-hidden');
+            stickyBar.removeClass('sbcb-hidden');
         }
     }
 

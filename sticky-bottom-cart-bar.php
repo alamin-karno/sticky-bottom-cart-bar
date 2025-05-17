@@ -8,7 +8,8 @@
  * Author URI: https://www.linkedin.com/in/alaminkarno/
  * License: MIT
  * License URI: https://opensource.org/licenses/MIT
- * Text Domain: sticky-bottom-cart-bar
+ * Requires at least: 5.0
+ * Requires PHP: 7.2
  */
 
 if (!defined('ABSPATH')) exit;
@@ -21,22 +22,16 @@ $plugin_version = isset($plugin_data['Version']) ? $plugin_data['Version'] : '1.
 add_action('wp_enqueue_scripts', function () use ($plugin_version) {
     if (!is_product()) return;
 
-    wp_enqueue_style(
-        'cbcb-style',
-        plugin_dir_url(__FILE__) . 'style.css',
-        array(),
-        $plugin_version
-    );
+    $css_path = plugin_dir_url(__FILE__) . 'assets/css/style.css';
+    $js_path  = plugin_dir_url(__FILE__) . 'assets/js/script.js';
+    
+    wp_register_style('sbcb-style', $css_path, array(), $plugin_version);
+    wp_enqueue_style('sbcb-style');
 
-    wp_enqueue_script(
-        'cbcb-script',
-        plugin_dir_url(__FILE__) . 'script.js',
-        array('jquery'),
-        $plugin_version,
-        true
-    );
+    wp_register_script('sbcb-script', $js_path, array('jquery'), $plugin_version, true);
+    wp_enqueue_script('sbcb-script');
 
-    wp_localize_script('cbcb-script', 'cbcb_params', [
+    wp_localize_script('sbcb-script', 'sbcb_params', [
         'ajax_url' => WC_AJAX::get_endpoint('add_to_cart'),
         'cart_url' => wc_get_cart_url(),
         'checkout_url' => wc_get_checkout_url()
@@ -48,33 +43,19 @@ add_action('woocommerce_after_add_to_cart_form', function () {
     global $product;
 
     ?>
-    <div id="cbcb-sticky-bar">
-        <div id="cbcb-price-wrapper">
-            <div id="cbcb-price-label">Total:</div>
+    <div id="sbcb-sticky-bar">
+        <div id="sbcb-price-wrapper">
+            <div id="sbcb-price-label">Total:</div>
             <?php
             $price_to_show = $product->get_sale_price() ? $product->get_sale_price() : $product->get_regular_price();
             $price_html = wc_price($price_to_show);
             ?>
-            <div id="cbcb-price-container"><?php echo $price_html; ?></div>
+            <div id="sbcb-price-container"><?php echo $price_html; ?></div>
         </div>
-        <div id="cbcb-buttons">
-            <button id="cbcb-add-to-cart"><span class="cbcb-label">ADD TO CART</span><span class="cbcb-loader"></span></button>
-            <button id="cbcb-buy-now"><span class="cbcb-label">BUY NOW</span><span class="cbcb-loader"></span></button>
+        <div id="sbcb-buttons">
+            <button id="sbcb-add-to-cart"><span class="sbcb-label">ADD TO CART</span><span class="sbcb-loader"></span></button>
+            <button id="sbcb-buy-now"><span class="sbcb-label">BUY NOW</span><span class="sbcb-loader"></span></button>
         </div>
     </div>
-    <style>
-
-        /* Hide only default Add to Cart & Buy Now buttons inside form.cart */
-        form.cart button.single_add_to_cart_button,
-        form.cart .buy-now-button {
-            display: none !important;
-        }
-        
-        /* Hide entire quantity input section */
-        form.cart .quantity {
-            display: none !important;
-        }
-
-    </style>
     <?php
 });
