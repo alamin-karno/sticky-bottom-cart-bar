@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.2.0] - 2024-07-27
+## [1.2.0] - 2025-05-21
 
 ### Added
 - Nonce security for AJAX add-to-cart and buy-now operations.
