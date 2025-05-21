@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.2.0] - 2024-07-27
+
+### Added
+- Nonce security for AJAX add-to-cart and buy-now operations.
+- Error handling and user feedback for AJAX failures.
+- Full internationalization support (translation readiness for all user-facing strings).
+- Plugin prepared for `.pot` file generation for easier translation.
+
+### Improved
+- CSS styling by removing all `!important` declarations for better theme compatibility.
+- JavaScript robustness and maintainability.
+- Accuracy of `README.md` and `readme.txt` documentation.
+
+### Fixed
+- Removed misleading references to a non-existent settings page in documentation.
+
 ## [1.1.1] - 2025-05-17
 
 ### Fixed

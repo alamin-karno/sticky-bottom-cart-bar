@@ -48,14 +48,14 @@ jQuery(function ($) {
             });
 
             if (!valid) {
-                showWarning('Please select a product variation before proceeding.', '.variations_form');
+                showWarning(sbcb_params.text_select_variation, '.variations_form');
                 return;
             }
         }
 
         // Validate all required form inputs
         if (!validateFormFields($form)) {
-            showWarning('Please fill all required product fields before adding to cart.');
+            showWarning(sbcb_params.text_fill_required_fields);
             return;
         }
 
@@ -67,9 +67,24 @@ jQuery(function ($) {
             formData = formData.replace(/product_id=[0-9]+&?/g, '');
         }
 
-        $.post(sbcb_params.ajax_url, formData, function () {
+        // Add the nonce to the form data
+        formData += '&_wpnonce=' + sbcb_params.ajax_nonce;
+
+        $.post(sbcb_params.ajax_url, formData, function (response) {
+            // Check if WooCommerce returned an error (e.g., out of stock)
+            if (response && response.fragments && response.fragments.notices_html) {
+                // WooCommerce often includes notices in 'fragments.notices_html'
+                // This indicates a soft error (like validation, out of stock) rather than a network/server error.
+                // Redirect to cart to display these notices.
+                window.location.href = sbcb_params.cart_url;
+                return; 
+            }
             hideLoading($btn);
             window.location.href = redirectTo;
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            hideLoading($btn);
+            showWarning(sbcb_params.text_ajax_error); 
+            console.error('SBCB AJAX error:', textStatus, errorThrown);
         });
     }
 

@@ -37,16 +37,19 @@
 }
 
 /*Price Inherit Font Size */
-#sbcb-price-container .amount {
-    font-size: inherit !important;
-    color: #0c0bff !important;
+/* Increased specificity to override theme styles for price amount */
+#sbcb-sticky-bar #sbcb-price-wrapper #sbcb-price-container .woocommerce-Price-amount.amount,
+#sbcb-sticky-bar #sbcb-price-wrapper #sbcb-price-container .amount { /* Fallback if .woocommerce-Price-amount is not present */
+    font-size: inherit;
+    color: #0c0bff;
     font-weight: bold;
     white-space: nowrap;
 }
 
 /* Label Styling */
-#sbcb-price-label {
-    font-size: inherit !important;
+/* Increased specificity for price label */
+#sbcb-sticky-bar #sbcb-price-wrapper #sbcb-price-label {
+    font-size: inherit;
     color: #000;
     font-weight: bold;
     white-space: nowrap;
@@ -130,12 +133,17 @@
 
 
 /* Hide only default Add to Cart & Buy Now buttons inside form.cart */
-form.cart button.single_add_to_cart_button,
-form.cart .buy-now-button {
-    display: none !important;
+/* Increased specificity to hide original theme buttons */
+body.single-product div.product form.cart button.single_add_to_cart_button,
+body.single-product div.product form.cart .button.alt, /* Common alternative for add to cart */
+body.single-product div.product form.cart input[type="submit"].button, /* Another common pattern */
+body.single-product div.product form.cart .buy-now-button { /* For buy now buttons if present */
+    display: none;
 }
 
 /* Hide entire quantity input section */
-form.cart .quantity {
-    display: none !important;
+/* Increased specificity to hide original quantity input */
+body.single-product div.product form.cart .quantity,
+body.single-product div.product form.cart div.quantity { /* Targeting div wrapper if present */
+    display: none;
 }
