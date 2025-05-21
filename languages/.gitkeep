@@ -1,0 +1,16 @@
+# This file is intentionally kept blank.
+# It's used to ensure that the 'languages' directory is tracked by Git,
+# as Git does not track empty directories.
+# This directory is intended to store .po and .mo translation files
+# for the Sticky Bottom Cart Bar plugin.
+#
+# The Text Domain for this plugin is: sticky-bottom-cart-bar
+# The Domain Path is: /languages
+#
+# A .pot (Portable Object Template) file can be generated using tools like
+# WP-CLI: wp i18n make-pot . languages/sticky-bottom-cart-bar.pot
+# or other Poedit-compatible software.
+#
+# This .pot file would then be used by translators to create .po files
+# for specific languages (e.g., sticky-bottom-cart-bar-fr_FR.po),
+# which are then compiled into .mo files (e.g., sticky-bottom-cart-bar-fr_FR.mo).
