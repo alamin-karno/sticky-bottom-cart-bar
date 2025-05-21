@@ -4,7 +4,7 @@ Tags: add to cart, sticky bar, buy now, floating button, woocommerce plugin
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 Donate link: https://www.buymeacoffee.com/alaminkarno
@@ -45,20 +45,30 @@ Yes, it automatically detects selected variations before adding to cart.
 
 == Changelog ==
 
-= 1.1.1 =
-* Security: Added nonces to AJAX actions.
-* Robustness: Improved AJAX error handling and made client-side strings translatable.
-* CSS: Removed all `!important` flags by increasing selector specificity.
-* Localization: Prepared PHP files for full translation and added text domain.
-* Documentation: Updated readme files for accuracy.
+= 1.2.0 - 2024-07-27 =
+* Added: Nonce security for AJAX add-to-cart and buy-now operations.
+* Added: Error handling and user feedback for AJAX failures.
+* Added: Full internationalization support (translation readiness for all user-facing strings).
+* Added: Plugin prepared for `.pot` file generation for easier translation.
+* Improved: CSS styling by removing all `!important` declarations for better theme compatibility.
+* Improved: JavaScript robustness and maintainability.
+* Improved: Accuracy of `README.md` and `readme.txt` documentation.
+* Fixed: Removed misleading references to a non-existent settings page in documentation.
+
+= 1.1.1 - 2025-05-17 = 
+* Fixed: Escaped product price output using WordPress-compliant functions to enhance security.
+* Fixed: Addressed WordPress plugin review feedback by improving output handling to align with best practices.
 
 = 1.0.0 =
 * Initial release: Sticky Add to Cart + Buy Now button.
 
 == Upgrade Notice ==
 
+= 1.2.0 =
+This version includes major enhancements: nonce security, AJAX error handling, full internationalization support, CSS `!important` removal, JavaScript improvements, and documentation updates. Highly recommended update.
+
 = 1.1.1 =
-This version includes security enhancements, improved AJAX handling, CSS refinements, and full localization support. Please update.
+This version includes security fixes related to price output and output handling.
 
 = 1.0.0 =
 Initial version.
