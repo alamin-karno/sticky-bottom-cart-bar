@@ -10,7 +10,8 @@ A lightweight custom WordPress plugin that adds a fixed **"Add to Cart"** and **
 - Uses native WooCommerce add-to-cart form for full compatibility.
 - Sticky bar visibility toggles based on scroll direction (hides at the bottom, fades in when scrolling up).
 - Clean and minimal design with responsive styling.
-- Lightweight and easy to customize.
+- Lightweight and easy to customize via CSS.
+- Translation Ready: All plugin strings can be translated into other languages.
 
 ## 🚀 Installation
 
@@ -37,6 +38,9 @@ You can edit the CSS in `assets/css/style.css` to match your theme or move it in
   ├── assets/
   │   ├── css/style.css                 # Sticky bar styling
   │   └── js/script.js                  # JavaScript for sticky bar functionality
+  ├── languages/                        # .pot file and translations (to be added)
+  │   └── sticky-bottom-cart-bar.pot    # Template for translations
+  ├── readme.txt                        # WordPress plugin directory readme
   ├── README.md                         # Plugin documentation
   ├── LICENSE                           # License information
   └── CHANGELOG.md                      # Changelog
@@ -61,7 +65,7 @@ If you encounter issues, have questions, or would like to contribute:
   Feel free to contact me directly via [email](mailto:alamin.karno@gmail.com).
 
 - **🙋 Support**  
-  Check the [FAQ](#) (coming soon) or open an issue for help.
+  Check the [FAQ in readme.txt](readme.txt) or open an issue for help.
 
 
 ## 📜 License
